@@ -82,6 +82,7 @@ frame-support = { default-features = false , version = "23.0.0" }
 pallet-staking = { default-features = false , version = "23.0.0" }
 pallet-state-trie-migration = { default-features = false , version = "24.0.0" }
 pallet-staking-runtime-api = { default-features = false , version = "9.0.0" }
+pallet-sudo = { default-features = false , version = "23.0.0" }
 frame-system = { default-features = false , version = "23.0.0" }
 frame-system-rpc-runtime-api = { default-features = false , version = "21.0.0" }
 pallet-timestamp = { default-features = false , version = "22.0.0" }
@@ -188,6 +189,7 @@ std = [
 	"pallet-society/std",
 	"pallet-staking-runtime-api/std",
 	"pallet-staking/std",
+  "pallet-sudo/std",
 	"pallet-state-trie-migration/std",
 	"pallet-timestamp/std",
 	"pallet-tips/std",
@@ -266,6 +268,7 @@ runtime-benchmarks = [
 	"pallet-session-benchmarking/runtime-benchmarks",
 	"pallet-society/runtime-benchmarks",
 	"pallet-staking/runtime-benchmarks",
+  "pallet-sudo/runtime-benchmarks",
 	"pallet-state-trie-migration/runtime-benchmarks",
 	"pallet-timestamp/runtime-benchmarks",
 	"pallet-tips/runtime-benchmarks",
@@ -325,6 +328,7 @@ try-runtime = [
 	"pallet-session/try-runtime",
 	"pallet-society/try-runtime",
 	"pallet-staking/try-runtime",
+  "pallet-sudo/try-runtime",
 	"pallet-state-trie-migration/try-runtime",
 	"pallet-timestamp/try-runtime",
 	"pallet-tips/try-runtime",
