@@ -115,6 +115,8 @@ xcm = { package = "staging-xcm", default-features = false , version = "4.0.0" }
 xcm-executor = { package = "staging-xcm-executor", default-features = false , version = "4.0.0" }
 xcm-builder = { package = "staging-xcm-builder", default-features = false , version = "4.0.0" }
 
+pallet-sudo = { default-features = false , version = "25.0.0" }
+
 [dev-dependencies]
 tiny-keccak = { version = "2.0.2", features = ["keccak"] }
 keyring = { package = "sp-keyring", version = "28.0.0" }
@@ -193,6 +195,7 @@ std = [
 	"pallet-society/std",
 	"pallet-staking-runtime-api/std",
 	"pallet-staking/std",
+  "pallet-sudo/std",
 	"pallet-state-trie-migration/std",
 	"pallet-timestamp/std",
 	"pallet-tips/std",
@@ -273,6 +276,7 @@ runtime-benchmarks = [
 	"pallet-session-benchmarking/runtime-benchmarks",
 	"pallet-society/runtime-benchmarks",
 	"pallet-staking/runtime-benchmarks",
+  "pallet-sudo/runtime-benchmarks",
 	"pallet-state-trie-migration/runtime-benchmarks",
 	"pallet-timestamp/runtime-benchmarks",
 	"pallet-tips/runtime-benchmarks",
@@ -333,6 +337,7 @@ try-runtime = [
 	"pallet-session/try-runtime",
 	"pallet-society/try-runtime",
 	"pallet-staking/try-runtime",
+  "pallet-sudo/try-runtime",
 	"pallet-state-trie-migration/try-runtime",
 	"pallet-timestamp/try-runtime",
 	"pallet-tips/try-runtime",
