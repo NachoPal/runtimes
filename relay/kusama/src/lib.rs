@@ -1483,6 +1483,12 @@ impl pallet_state_trie_migration::Config for Runtime {
 	type MaxKeyLen = MigrationMaxKeyLen;
 }
 
+impl pallet_sudo::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type RuntimeCall = RuntimeCall;
+	type WeightInfo = ();
+}
+
 construct_runtime! {
 	pub enum Runtime
 	{
@@ -1613,6 +1619,9 @@ construct_runtime! {
 
 		// Generalized message queue
 		MessageQueue: pallet_message_queue::{Pallet, Call, Storage, Event<T>} = 100,
+
+    // Sudo.
+		Sudo: pallet_sudo::{Pallet, Call, Storage, Event<T>, Config<T>} = 255,
 	}
 }
 
