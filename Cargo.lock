@@ -11167,7 +11167,6 @@ dependencies = [
  "pallet-staking",
  "pallet-staking-runtime-api",
  "pallet-state-trie-migration",
- "pallet-sudo",
  "pallet-timestamp",
  "pallet-tips",
  "pallet-transaction-payment",
