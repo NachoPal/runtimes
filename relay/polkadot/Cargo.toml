@@ -81,6 +81,7 @@ pallet-treasury = { default-features = false , version = "22.0.0" }
 pallet-whitelist = { default-features = false , version = "22.0.0" }
 pallet-vesting = { default-features = false , version = "23.0.0" }
 pallet-utility = { default-features = false , version = "23.0.0" }
+pallet-sudo = { default-features = false , version = "23.0.0" }
 frame-election-provider-support = { default-features = false , version = "23.0.0" }
 pallet-xcm = { default-features = false, features=["experimental"] , version = "2.0.0" }
 pallet-xcm-benchmarks = { default-features = false, optional = true , version = "2.0.0" }
