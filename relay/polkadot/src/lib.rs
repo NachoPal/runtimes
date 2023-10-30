@@ -106,6 +106,8 @@ mod weights;
 
 mod bag_thresholds;
 
+mod paras_scheduler_migration;
+
 // Governance configurations.
 pub mod governance;
 use governance::{
@@ -1580,7 +1582,7 @@ pub mod migrations {
 	pub type Unreleased = (
 		pallet_im_online::migration::v1::Migration<Runtime>,
 		parachains_configuration::migration::v7::MigrateToV7<Runtime>,
-		parachains_scheduler::migration::v1::MigrateToV1<Runtime>,
+		crate::paras_scheduler_migration::v1::MigrateToV1<Runtime>,
 		parachains_configuration::migration::v8::MigrateToV8<Runtime>,
 
 		// Gov v1 storage migrations
@@ -2467,6 +2469,7 @@ mod multiplier_tests {
 	use super::*;
 	use frame_support::{dispatch::DispatchInfo, traits::OnFinalize};
 	use runtime_common::{MinimumMultiplier, TargetBlockFullness};
+	use scale_info::TypeInfo;
 	use separator::Separatable;
 	use sp_runtime::traits::Convert;
 
@@ -2588,6 +2591,13 @@ mod multiplier_tests {
 			});
 			blocks += 1;
 		}
+	}
+
+	#[test]
+	fn ensure_xcm_metadata_is_correct() {
+		let path = xcm::VersionedXcm::<()>::type_info().path;
+		// Ensure that the name doesn't include `staging` (from the pallet name)
+		assert_eq!(vec!["xcm", "VersionedXcm"], path.segments);
 	}
 }
 
