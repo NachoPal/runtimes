@@ -200,6 +200,9 @@ pub fn polkadot_testnet_genesis(
 	const STASH: u128 = 100 * DOT;
 
 	polkadot_runtime::RuntimeGenesisConfig {
+        sudo: polkadot_runtime::SudoConfig {
+			key: Some(get_account_id_from_seed::<sr25519::Public>("Alice")),
+		},
 		system: polkadot_runtime::SystemConfig { code: wasm_binary.to_vec(), ..Default::default() },
 		indices: polkadot_runtime::IndicesConfig { indices: vec![] },
 		balances: polkadot_runtime::BalancesConfig {
@@ -285,6 +288,9 @@ pub fn kusama_testnet_genesis(
 	const STASH: u128 = 100 * KSM;
 
 	kusama_runtime::RuntimeGenesisConfig {
+        sudo: kusama_runtime::SudoConfig {
+			key: Some(get_account_id_from_seed::<sr25519::Public>("Alice")),
+		},
 		system: kusama_runtime::SystemConfig { code: wasm_binary.to_vec(), ..Default::default() },
 		indices: kusama_runtime::IndicesConfig { indices: vec![] },
 		balances: kusama_runtime::BalancesConfig {
