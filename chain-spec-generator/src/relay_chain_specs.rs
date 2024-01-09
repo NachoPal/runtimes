@@ -73,6 +73,7 @@ fn polkadot_session_keys(
 	para_validator: ValidatorId,
 	para_assignment: AssignmentId,
 	authority_discovery: AuthorityDiscoveryId,
+  beefy: BeefyId,
 ) -> polkadot_runtime::SessionKeys {
 	polkadot_runtime::SessionKeys {
 		babe,
@@ -81,6 +82,7 @@ fn polkadot_session_keys(
 		para_validator,
 		para_assignment,
 		authority_discovery,
+    beefy,
 	}
 }
 
@@ -190,6 +192,7 @@ pub fn polkadot_testnet_genesis(
 		ValidatorId,
 		AssignmentId,
 		AuthorityDiscoveryId,
+    BeefyId,
 	)>,
 	_root_key: AccountId,
 	endowed_accounts: Option<Vec<AccountId>>,
@@ -208,6 +211,7 @@ pub fn polkadot_testnet_genesis(
 		balances: polkadot_runtime::BalancesConfig {
 			balances: endowed_accounts.iter().map(|k| (k.clone(), ENDOWMENT)).collect(),
 		},
+    beefy: Default::default(),
 		session: polkadot_runtime::SessionConfig {
 			keys: initial_authorities
 				.iter()
@@ -222,6 +226,7 @@ pub fn polkadot_testnet_genesis(
 							x.5.clone(),
 							x.6.clone(),
 							x.7.clone(),
+							x.8.clone(),
 						),
 					)
 				})
@@ -359,7 +364,7 @@ fn polkadot_development_config_genesis(
 ) -> polkadot_runtime::RuntimeGenesisConfig {
 	polkadot_testnet_genesis(
 		wasm_binary,
-		vec![get_authority_keys_from_seed_no_beefy("Alice")],
+		vec![get_authority_keys_from_seed("Alice")],
 		get_account_id_from_seed::<sr25519::Public>("Alice"),
 		None,
 	)
@@ -415,8 +420,8 @@ fn polkadot_local_testnet_genesis(wasm_binary: &[u8]) -> polkadot_runtime::Runti
 	polkadot_testnet_genesis(
 		wasm_binary,
 		vec![
-			get_authority_keys_from_seed_no_beefy("Alice"),
-			get_authority_keys_from_seed_no_beefy("Bob"),
+			get_authority_keys_from_seed("Alice"),
+			get_authority_keys_from_seed("Bob"),
 		],
 		get_account_id_from_seed::<sr25519::Public>("Alice"),
 		None,
